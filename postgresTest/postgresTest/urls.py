@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from testdb.views import PersonList , PersonDetail, api_root
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('person', PersonList.as_view(), name='person'),
+    path('person/<int:pk>/', PersonDetail.as_view(), name='person'),
+    path('', api_root)
+    
 ]
